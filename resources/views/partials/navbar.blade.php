@@ -1,4 +1,4 @@
-{{-- FLOATING CAPSULE NAVBAR (Simplified & Compact Dropdown) --}}
+{{-- FLOATING CAPSULE NAVBAR (Standalone Booking Link + Compact Sub-Dropdown) --}}
 <div class="floating-navbar-container">
     <nav class="floating-navbar">
         {{-- Left: Circle Badge Logo --}}
@@ -58,10 +58,8 @@
                 </a>
             @endauth
 
-            <a href="{{ request()->routeIs('home') ? '#booking' : route('home').'#booking' }}"
-               data-nav="#booking"
-               onclick="onNavClick('#booking')"
-               class="nav-pill-btn" style="padding: 7px 16px; font-size: 12px;">
+            {{-- Dedicated Standalone Page Link for BOOK SERVICE --}}
+            <a href="{{ route('booking.create') }}" class="nav-pill-btn" style="padding: 7px 16px; font-size: 12px;">
                 <span>BOOK SERVICE</span>
             </a>
 
@@ -123,8 +121,8 @@
         </nav>
 
         <div class="mobile-dropdown-footer">
-            <a href="{{ request()->routeIs('home') ? '#booking' : route('home').'#booking' }}" onclick="onNavClick('#booking'); closeMobileNavMenu();" class="btn-gold" style="width: 100%; justify-content: center; padding: 10px; font-size: 12px; text-decoration: none;">
-                ⚡ BOOK SERVICE SLOT
+            <a href="{{ route('booking.create') }}" class="btn-gold" style="width: 100%; justify-content: center; padding: 10px; font-size: 12px; text-decoration: none;">
+                ⚡ BOOK WORKSHOP SERVICE SLOT
             </a>
         </div>
     </div>

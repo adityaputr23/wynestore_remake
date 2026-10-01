@@ -15,14 +15,14 @@
             We don't just fix bikes. We forge them. High-performance tuning, custom fabrication, and aggressive styling for those who demand more from the machine.
         </p>
         <div class="hero-cta">
-            <a href="#booking" class="btn-gold">BUILD YOURS</a>
+            <a href="{{ route('booking.create') }}" class="btn-gold">BUILD YOURS</a>
             <a href="#queue" class="btn-outline">VIEW GARAGE</a>
         </div>
     </div>
 
     <div class="hero-poster-wrapper">
         <div class="hero-poster-card">
-            <img src="{{ asset('images/wyne_store.jpg') }}" alt="Wyne Store Artwork Poster" class="hero-poster-img">
+            <img src="/images/wyne_store.jpg" alt="Wyne Store Artwork Poster" class="hero-poster-img">
         </div>
     </div>
 </section>
@@ -52,7 +52,7 @@
 
             <div class="service-card-action">
                 <span class="service-price">Rp 2.500.000</span>
-                <a href="#booking" onclick="preselectService(1)" class="btn-arrow-square" title="Book Custom Lighting Kits">
+                <a href="{{ route('booking.create') }}?service=1" class="btn-arrow-square" title="Book Custom Lighting Kits">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -76,7 +76,7 @@
             </div>
             <div class="service-card-action">
                 <span class="service-price">Rp 3.500.000</span>
-                <a href="#booking" onclick="preselectService(2)" class="btn-gold" style="padding: 8px 18px; font-size: 12px; text-decoration: none;">
+                <a href="{{ route('booking.create') }}?service=2" class="btn-gold" style="padding: 8px 18px; font-size: 12px; text-decoration: none;">
                     BOOK SERVICE
                 </a>
             </div>
@@ -98,7 +98,7 @@
             </div>
             <div class="service-card-action">
                 <span class="service-price">Rp 4.800.000</span>
-                <a href="#booking" onclick="preselectService(3)" class="btn-gold" style="padding: 8px 18px; font-size: 12px; text-decoration: none;">
+                <a href="{{ route('booking.create') }}?service=3" class="btn-gold" style="padding: 8px 18px; font-size: 12px; text-decoration: none;">
                     BOOK SERVICE
                 </a>
             </div>
@@ -115,7 +115,7 @@
                     </p>
                 </div>
                 <div>
-                    <a href="#booking" onclick="preselectService(4)" class="link-schedule">
+                    <a href="{{ route('booking.create') }}?service=4" class="link-schedule">
                         BOOK SCHEDULE &rsaquo;
                     </a>
                 </div>
@@ -182,7 +182,7 @@
                 </div>
                 <div class="service-card-action" style="border-top: 1px solid var(--border-color); padding-top: 16px; margin-top: 16px; flex-wrap: wrap; gap: 10px;">
                     <span class="service-price" style="font-size: 18px;">Rp {{ number_format($lp->price, 0, ',', '.') }}</span>
-                    <a href="#booking" onclick="preselectService(1)" class="btn-gold" style="padding: 8px 16px; font-size: 12px; text-decoration: none;">
+                    <a href="{{ route('booking.create') }}?service=1" class="btn-gold" style="padding: 8px 16px; font-size: 12px; text-decoration: none;">
                         BOOK INSTALLATION
                     </a>
                 </div>
@@ -218,7 +218,7 @@
 
                 <div class="service-card-action" style="border-top: 1px solid var(--border-color); padding-top: 16px; margin-top: 16px;">
                     <span class="service-price" style="font-size: 16px;">Est: Rp {{ number_format($moto->build_cost, 0, ',', '.') }}</span>
-                    <a href="#booking" class="btn-gold" style="padding: 8px 16px; font-size: 12px; text-decoration: none;">
+                    <a href="{{ route('booking.create') }}" class="btn-gold" style="padding: 8px 16px; font-size: 12px; text-decoration: none;">
                         ORDER BUILD
                     </a>
                 </div>
@@ -303,106 +303,7 @@
     </div>
 </section>
 
-<!-- 8. BOOK WORKSHOP SERVICE SECTION (#booking) -->
-<section class="services-section" id="booking" style="max-width: 760px; margin: 0 auto; width: 100%;">
-    <div class="section-header">
-        <div>
-            <h2 class="section-title">BOOK WORKSHOP SERVICE</h2>
-            <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 6px;">
-                Reserve your build slot at Wyne Store Workshop. Instant registration in MySQL database.
-            </p>
-        </div>
-        <span class="section-subtitle-tag">07 // RESERVATION</span>
-    </div>
-
-    <div style="background: var(--glass-bg); border: 1px solid var(--border-color); padding: 36px; border-radius: 4px;">
-        <form id="mainPageBookingForm" onsubmit="submitMainBooking(event)">
-            @csrf
-            <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" name="customer_name" class="form-input" placeholder="e.g. Aditya Pratama" required>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Phone / WhatsApp</label>
-                    <input type="text" name="customer_phone" class="form-input" placeholder="e.g. 081234567890" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Email Address (Optional)</label>
-                    <input type="email" name="customer_email" class="form-input" placeholder="name@domain.com">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Motorcycle Brand & Model</label>
-                    <input type="text" name="motorcycle_model" class="form-input" placeholder="e.g. Harley Sportster / Yamaha XSR 155" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Production Year</label>
-                    <input type="text" name="motorcycle_year" class="form-input" placeholder="e.g. 2022">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Select Service Package</label>
-                <select name="service_id" id="mainServiceSelect" class="form-select" required>
-                    <option value="">-- Choose Workshop Service --</option>
-                    @foreach($services as $srv)
-                        <option value="{{ $srv->id }}">
-                            {{ $srv->title }} ({{ $srv->tag }}) - Rp {{ number_format($srv->price, 0, ',', '.') }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Preferred Date</label>
-                    <input type="date" name="booking_date" class="form-input" min="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Preferred Time Slot</label>
-                    <select name="booking_time" class="form-select" required>
-                        <option value="09:00 AM">09:00 AM - Morning Slot</option>
-                        <option value="11:00 AM">11:00 AM - Midday Slot</option>
-                        <option value="02:00 PM">02:00 PM - Afternoon Slot</option>
-                        <option value="04:00 PM">04:00 PM - Evening Slot</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Custom Specifications / Notes</label>
-                <textarea name="notes" class="form-textarea" rows="4" placeholder="Describe any specific custom requests, custom loom requirements, or parts..."></textarea>
-            </div>
-
-            <button type="submit" id="btnMainBooking" class="btn-gold" style="width: 100%; padding: 14px; margin-top: 12px;">
-                <span>CONFIRM BOOKING SLOT &rsaquo;</span>
-            </button>
-        </form>
-
-        <div id="mainBookingSuccess" style="display: none; text-align: center; padding: 20px 0;">
-            <div style="font-family: var(--font-heading); font-size: 32px; color: var(--accent-gold); margin-bottom: 8px;">BOOKING CONFIRMED!</div>
-            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Your service reservation has been saved into MySQL database.</p>
-            <div style="background: #0b0c0f; border: 1px dashed var(--accent-gold); padding: 16px; margin-bottom: 24px;">
-                <div style="font-size: 11px; color: var(--text-muted); letter-spacing: 1px;">YOUR BOOKING CODE</div>
-                <div id="mainBookingCodeDisplay" style="font-family: var(--font-heading); font-size: 44px; color: var(--accent-gold);">WYN-0000</div>
-            </div>
-            <a href="#queue" class="btn-gold" style="display: inline-block; padding: 12px 28px; text-decoration: none;">
-                VIEW WORKSHOP QUEUE
-            </a>
-        </div>
-    </div>
-</section>
-
 <script>
-    function preselectService(id) {
-        const select = document.getElementById('mainServiceSelect');
-        if (select) select.value = id;
-    }
-
     async function trackCodeOnMain() {
         const code = document.getElementById('trackCodeInputMain').value.trim();
         const box = document.getElementById('mainTrackResult');
@@ -424,39 +325,6 @@
             }
         } catch(e) {
             box.innerHTML = '<span style="color: #ef4444;">Gagal menghubungi server.</span>';
-        }
-    }
-
-    async function submitMainBooking(e) {
-        e.preventDefault();
-        const btn = document.getElementById('btnMainBooking');
-        btn.disabled = true;
-        btn.innerText = 'PROCESSING...';
-
-        const formData = new FormData(document.getElementById('mainPageBookingForm'));
-
-        try {
-            const res = await fetch("{{ route('booking.store') }}", {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Accept': 'application/json'
-                },
-                body: formData
-            });
-            const data = await res.json();
-            if (data.success) {
-                document.getElementById('mainPageBookingForm').style.display = 'none';
-                document.getElementById('mainBookingSuccess').style.display = 'block';
-                document.getElementById('mainBookingCodeDisplay').innerText = data.booking_code;
-            } else {
-                alert('Gagal: ' + data.message);
-            }
-        } catch(err) {
-            alert('Terjadi kesalahan koneksi.');
-        } finally {
-            btn.disabled = false;
-            btn.innerText = 'CONFIRM BOOKING SLOT ›';
         }
     }
 </script>
