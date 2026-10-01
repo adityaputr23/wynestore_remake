@@ -1,24 +1,28 @@
-{{-- FLOATING CAPSULE NAVBAR (Reference Image Layout with 3-lines Menu Popup) --}}
+{{-- FLOATING CAPSULE NAVBAR (Simplified to 3 main links + Dropdown menu) --}}
 <div class="floating-navbar-container">
     <nav class="floating-navbar">
         {{-- Left: Circle Badge Logo --}}
         <a href="{{ route('home') }}" class="nav-logo-badge" title="WYNE STORE - Home">
-            <img src="{{ asset('images/wyne_store_logo.jpg') }}" alt="WYNE STORE Logo">
+            <img src="/images/wyne_store_logo.jpg" alt="WYNE STORE Logo">
         </a>
 
         <a href="{{ route('home') }}" class="wyne-brand-link" style="text-decoration: none;">
             <span class="wyne-logo-text">WYNE STORE</span>
         </a>
 
-        {{-- Desktop Navigation Links (Visible on screen width >= 1024px) --}}
+        {{-- Desktop Navigation Links: Only 3 Main Options Shown --}}
         <ul class="floating-nav-links">
             <li><a href="{{ request()->routeIs('home') ? '#home' : route('home').'#home' }}" data-nav="#home" onclick="onNavClick('#home')" class="floating-nav-link active">Home</a></li>
             <li><a href="{{ request()->routeIs('home') ? '#services' : route('home').'#services' }}" data-nav="#services" onclick="onNavClick('#services')" class="floating-nav-link">Services</a></li>
             <li><a href="{{ request()->routeIs('home') ? '#inventory' : route('home').'#inventory' }}" data-nav="#inventory" onclick="onNavClick('#inventory')" class="floating-nav-link">Inventory</a></li>
-            <li><a href="{{ request()->routeIs('home') ? '#lighting' : route('home').'#lighting' }}" data-nav="#lighting" onclick="onNavClick('#lighting')" class="floating-nav-link">Lighting</a></li>
-            <li><a href="{{ request()->routeIs('home') ? '#motorcycles' : route('home').'#motorcycles' }}" data-nav="#motorcycles" onclick="onNavClick('#motorcycles')" class="floating-nav-link">Motorcycles</a></li>
-            <li><a href="{{ request()->routeIs('home') ? '#queue' : route('home').'#queue' }}" data-nav="#queue" onclick="onNavClick('#queue')" class="floating-nav-link">Queue</a></li>
-            <li><a href="{{ request()->routeIs('home') ? '#updates' : route('home').'#updates' }}" data-nav="#updates" onclick="onNavClick('#updates')" class="floating-nav-link">Updates</a></li>
+            
+            {{-- Dropdown Trigger Button for Remaining Options --}}
+            <li style="position: relative;">
+                <button type="button" class="floating-nav-link" onclick="toggleMobileNavMenu()" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                    <span>Lainnya</span>
+                    <span style="font-size: 10px; color: var(--accent-gold);">▾</span>
+                </button>
+            </li>
         </ul>
 
         {{-- Right Actions --}}
@@ -75,7 +79,7 @@
         <div class="mobile-dropdown-header">
             <div>
                 <div class="wyne-logo-text" style="font-size: 22px;">WYNE STORE</div>
-                <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-sub);">WORKSHOP SECTIONS & NAVIGATION</div>
+                <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-sub);">PILIHAN KATEGORI & SEKSI BENGKEL</div>
             </div>
             @auth
                 <div style="font-size: 11px; color: var(--accent-gold); font-weight: 700; background: rgba(245,214,152,0.1); border: 1px solid var(--accent-gold); padding: 4px 10px; border-radius: 50px;">
@@ -110,7 +114,7 @@
         @endauth
 
         <div style="font-family: var(--font-sub); font-size: 11px; font-weight: 700; color: var(--accent-gold); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px;">
-            WORKSHOP SECTIONS
+            SEMUA PILIHAN SEKSI
         </div>
 
         <nav class="mobile-dropdown-links">
@@ -121,16 +125,16 @@
                 <span>Services</span>
             </a>
             <a href="{{ request()->routeIs('home') ? '#inventory' : route('home').'#inventory' }}" data-nav="#inventory" onclick="onNavClick('#inventory'); closeMobileNavMenu();" class="mobile-dropdown-link">
-                <span>Inventory</span>
+                <span>Inventory & Spareparts</span>
             </a>
             <a href="{{ request()->routeIs('home') ? '#lighting' : route('home').'#lighting' }}" data-nav="#lighting" onclick="onNavClick('#lighting'); closeMobileNavMenu();" class="mobile-dropdown-link">
-                <span>Custom Lighting</span>
+                <span>Custom Lighting Kits</span>
             </a>
             <a href="{{ request()->routeIs('home') ? '#motorcycles' : route('home').'#motorcycles' }}" data-nav="#motorcycles" onclick="onNavClick('#motorcycles'); closeMobileNavMenu();" class="mobile-dropdown-link">
-                <span>Motorcycles</span>
+                <span>Motorcycles Showcase</span>
             </a>
             <a href="{{ request()->routeIs('home') ? '#queue' : route('home').'#queue' }}" data-nav="#queue" onclick="onNavClick('#queue'); closeMobileNavMenu();" class="mobile-dropdown-link">
-                <span>Workshop Queue</span>
+                <span>Workshop Queue Bays</span>
             </a>
             <a href="{{ request()->routeIs('home') ? '#updates' : route('home').'#updates' }}" data-nav="#updates" onclick="onNavClick('#updates'); closeMobileNavMenu();" class="mobile-dropdown-link">
                 <span>Garage Updates</span>
@@ -182,8 +186,10 @@ function toggleMobileNavMenu() {
     } else {
         dropdown.classList.add('active');
         backdrop.classList.add('active');
-        hamburgerIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
+        if (hamburgerIcon && closeIcon) {
+            hamburgerIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+        }
     }
 }
 
@@ -196,8 +202,10 @@ function closeMobileNavMenu() {
 
     dropdown.classList.remove('active');
     backdrop.classList.remove('active');
-    hamburgerIcon.style.display = 'block';
-    closeIcon.style.display = 'none';
+    if (hamburgerIcon && closeIcon) {
+        hamburgerIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+    }
 }
 
 // ScrollSpy to move active indicator as user scrolls through sections
