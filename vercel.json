@@ -36,6 +36,8 @@
     "APP_ENV": "production",
     "APP_DEBUG": "true",
     "APP_KEY": "base64:lbH6QLYljvav6AJwxwdCeDTpeRaxWnYvZNcleIfT16U=",
+    "DB_CONNECTION": "sqlite",
+    "DB_DATABASE": "/var/task/user/database/database.sqlite",
     "LOG_CHANNEL": "stderr",
     "SESSION_DRIVER": "cookie",
     "CACHE_STORE": "array",
