@@ -6,7 +6,8 @@
         "build": "vite build",
         "dev": "vite",
         "push": "git add . && git commit -m \"auto update\" && git push origin main",
-        "sync": "autopush.bat"
+        "sync": "autopush_loop.bat",
+        "autopush": "autopush_loop.bat"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
