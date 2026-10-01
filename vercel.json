@@ -18,6 +18,8 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
+    "APP_URL": "https://wynestore.vercel.app",
+    "ASSET_URL": "/",
     "APP_KEY": "base64:lbH6QLYljvav6AJwxwdCeDTpeRaxWnYvZNcleIfT16U=",
     "DB_CONNECTION": "sqlite",
     "DB_DATABASE": "/var/task/user/database/database.sqlite",

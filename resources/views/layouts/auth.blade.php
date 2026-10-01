@@ -6,8 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>WYNE STORE // @yield('auth-title', 'Authentication')</title>
     <meta name="description" content="Login atau Daftar akun Wyne Store Workshop.">
-    <link rel="stylesheet" href="{{ asset('css/wynestore.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="stylesheet" href="/css/wynestore.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
         * { box-sizing: border-box; }
 

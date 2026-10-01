@@ -6,8 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>WYNE STORE // Custom Motorcycle Workshop & Precision Engineering</title>
     <meta name="description" content="High-performance tuning, custom fabrication, lighting kits, and aggressive styling for custom motorcycle enthusiasts.">
-    <link rel="stylesheet" href="{{ asset('css/wynestore.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="stylesheet" href="/css/wynestore.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script>
         // Disable browser scroll restoration so fresh page loads always start at top
         if ('scrollRestoration' in history) {

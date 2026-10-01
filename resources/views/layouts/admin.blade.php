@@ -6,8 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>WYNE STORE // Admin Management Dashboard</title>
     <meta name="description" content="Workshop Control Panel & Admin Management for Wyne Store.">
-    <link rel="stylesheet" href="{{ asset('css/wynestore.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="stylesheet" href="/css/wynestore.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body class="admin-app-layout">
 
